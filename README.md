@@ -1,6 +1,8 @@
 # clamav-alpine
 Alpine Docker Image containing libclamav and friends.
 
+[![Build Status](https://travis-ci.org/icebergdefender/clamav-alpine.svg?branch=master)](https://travis-ci.org/icebergdefender/clamav-alpine)
+
 This is a [multi-stage docker build](https://docs.docker.com/develop/develop-images/multistage-build/) that builds clamav.
 
 Note:
