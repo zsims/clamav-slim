@@ -41,5 +41,5 @@ RUN clamscan --version
 RUN wget http://database.clamav.net/bytecode.cvd &&\
     echo -n 'X5O!P%@AP[4\PZX54(P^)7CC)7}$' > eicar-test &&\
     echo -n 'EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' >> eicar-test
-RUN clamscan --database=bytecode.cvd eicar-test ; [[ $? -eq 1 ]] && { { echo "CHECK OK" ; exit 0 } || { echo "FAIL" ; exit 1 } }
+RUN clamscan --database=bytecode.cvd eicar-test ; if [ $? -eq 1 ]; then echo "CHECK OK"; else echo "FAIL" && exit 1; fi
 RUN cd / && rm -r /opt/clamav-test
