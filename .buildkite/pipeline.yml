@@ -8,12 +8,3 @@ steps:
     commands:
       - docker build --no-cache --build-arg=WANT_CLAMAV_VERSION="$$WANT_CLAMAV_VERSION" .
     <<: *default
-
-  - label: ':whale: Update images'
-    commands:
-      - docker tag "\$REPO:latest" "\$REPO:\$WANT_CLAMAV_VERSION" .
-      - docker push "\$REPO"
-    branches: master
-    agents:
-      queue: deploy
-    <<: *default
