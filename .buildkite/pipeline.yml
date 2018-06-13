@@ -1,0 +1,19 @@
+default: &default
+  env: &env
+    REPO: icebergdefender/clamav-alpine
+    WANT_CLAMAV_VERSION: '0.100.0'
+
+steps:
+  - label: ':hammer: Build Dockerfile'
+    commands:
+      - docker build --no-cache --build-arg=WANT_CLAMAV_VERSION="$$WANT_CLAMAV_VERSION" .
+    <<: *default
+
+  - label: ':whale: Update images'
+    commands:
+      - docker tag "\$REPO:latest" "\$REPO:\$WANT_CLAMAV_VERSION" .
+      - docker push "\$REPO"
+    branches: master
+    agents:
+      queue: deploy
+    <<: *default

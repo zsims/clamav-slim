@@ -1,6 +1,6 @@
 FROM alpine:3.7 as builder
 
-ENV WANT_CLAMAV_VERSION 0.100.0
+ARG WANT_CLAMAV_VERSION
 
 RUN apk add --no-cache \
         alpine-sdk \
