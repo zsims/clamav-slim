@@ -6,5 +6,5 @@ default: &default
 steps:
   - label: ':hammer: Build Dockerfile'
     commands:
-      - docker build --no-cache --build-arg=WANT_CLAMAV_VERSION="$$WANT_CLAMAV_VERSION" . && exit 0
+      - docker build --no-cache --build-arg=WANT_CLAMAV_VERSION="$$WANT_CLAMAV_VERSION" .
     <<: *default
