@@ -2,9 +2,19 @@ default: &default
   env: &env
     REPO: icebergdefender/clamav-alpine
     WANT_CLAMAV_VERSION: '0.100.0'
+    SHORT_COMMIT: "${BUILDKITE_COMMIT:0:7}"
 
 steps:
   - label: ':hammer: Build Dockerfile'
     commands:
-      - docker build --no-cache --build-arg=WANT_CLAMAV_VERSION="$$WANT_CLAMAV_VERSION" .
+      - docker build --no-cache --build-arg=WANT_CLAMAV_VERSION="$$WANT_CLAMAV_VERSION" -t "$$REPO:$$SHORT_COMMIT" .
+    <<: *default
+
+  - wait
+
+  - label: ':whale: Publish Docker Image'
+    commands:
+      - docker tag "$$REPO:$$SHORT_COMMIT" "$$REPO:$$WANT_CLAMAV_VERSION"
+      - docker push "$$REPO:$$WANT_CLAMAV_VERSION"
+    branches: "master"
     <<: *default
