@@ -14,7 +14,9 @@ steps:
 
   - label: ':whale: Publish Docker Image'
     commands:
-      - docker tag "$$REPO:$$SHORT_COMMIT" "$$REPO:$$WANT_CLAMAV_VERSION"
-      - docker push "$$REPO:$$WANT_CLAMAV_VERSION"
+      - docker tag "$$REPO:$$SHORT_COMMIT" "$$REPO:latest"
+      - docker push "$$REPO:latest"
+      - docker tag "$$REPO:$$SHORT_COMMIT" "$$REPO:v$$WANT_CLAMAV_VERSION"
+      - docker push "$$REPO:v$$WANT_CLAMAV_VERSION"
     branches: "master"
     <<: *default
