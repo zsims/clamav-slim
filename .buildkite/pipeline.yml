@@ -1,6 +1,6 @@
 default: &default
   env: &env
-    REPO: icebergdefender/clamav-alpine
+    REPO: icebergdefender/clamav-slim
     WANT_CLAMAV_VERSION: '0.100.0'
     SHORT_COMMIT: "${BUILDKITE_COMMIT:0:7}"
 
