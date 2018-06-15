@@ -37,9 +37,9 @@ COPY --from=builder /usr/local/bin/*clam* /usr/local/bin/
 COPY --from=builder /usr/local/include/clamav.h /usr/local/include/
 COPY --from=builder /usr/local/etc/*clam* /usr/local/etc/
 WORKDIR /opt/clamav-test
-RUN clamscan --version
-RUN wget http://database.clamav.net/bytecode.cvd &&\
+RUN clamscan --version &&\
+    wget http://database.clamav.net/bytecode.cvd &&\
     echo -n 'X5O!P%@AP[4\PZX54(P^)7CC)7}$' > eicar-test &&\
-    echo -n 'EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' >> eicar-test
-RUN clamscan --database=bytecode.cvd eicar-test ; if [ $? -eq 1 ]; then echo "CHECK OK"; else echo "FAIL" && exit 1; fi
-RUN cd / && rm -r /opt/clamav-test
+    echo -n 'EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' >> eicar-test &&\
+    clamscan --database=bytecode.cvd eicar-test ; if [[ $? -eq 1 ]]; then echo "CHECK OK"; else echo "FAIL" && exit 1; fi &&\
+    cd / && rm -r /opt/clamav-test
