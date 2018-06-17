@@ -9,6 +9,8 @@ This is a [multi-stage docker build](https://docs.docker.com/develop/develop-ima
 This image is intended to be used by components that integrate with libclamav (or want clamscan) and as such
  1. **Does not** contain any virus definitions (fetch with freshclam, or download from https://www.clamav.net/downloads
  2. **Does not** have any daemons setup (freshclamd, clamdscan, etc)
+ 
+The latest Debian stable "slim" image is used as the base, as alternatives such as Alpine are based on [musl-libc](https://www.musl-libc.org/) which is not well supported by libclamav, or other frameworks such as Rust Lang.
 
 # Example
 Build with [an available source version of ClamAV](https://www.clamav.net/downloads):
