@@ -17,7 +17,7 @@ RUN apt update && \
         libpcre2-dev \
         libjson-c-dev
 
-WORKDIR /opt/clamav-source
+WORKDIR /usr/local/src/clamav
 
 RUN wget "https://www.clamav.net/downloads/production/clamav-${WANT_CLAMAV_VERSION}.tar.gz" && \
     tar xf "clamav-${WANT_CLAMAV_VERSION}.tar.gz" && \
@@ -36,7 +36,7 @@ COPY --from=builder /usr/local/lib/*clam* /usr/local/lib/
 COPY --from=builder /usr/local/bin/*clam* /usr/local/bin/
 COPY --from=builder /usr/local/include/clamav.h /usr/local/include/
 COPY --from=builder /usr/local/etc/*clam* /usr/local/etc/
-WORKDIR /opt/clamav-test
+
 RUN sed -i 's/^Example$//' /usr/local/etc/freshclam.conf.sample && \
     mv /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf && \
     groupadd clamav && \
