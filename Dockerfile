@@ -36,7 +36,6 @@ COPY --from=builder /usr/local/lib/*clam* /usr/local/lib/
 COPY --from=builder /usr/local/bin/*clam* /usr/local/bin/
 COPY --from=builder /usr/local/include/clamav.h /usr/local/include/
 COPY --from=builder /usr/local/etc/*clam* /usr/local/etc/
-
 RUN sed -i 's/^Example$//' /usr/local/etc/freshclam.conf.sample && \
     mv /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf && \
     groupadd clamav && \
