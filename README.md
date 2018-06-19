@@ -1,5 +1,5 @@
 # clamav-slim
-[![Build status](https://badge.buildkite.com/017760520f5cc748d389f0f5e453df600b8abe5ae788fe7acd.svg)](https://buildkite.com/icebergdefender/clamav-slim)
+[![Build status](https://badge.buildkite.com/017760520f5cc748d389f0f5e453df600b8abe5ae788fe7acd.svg?branch=master)](https://buildkite.com/icebergdefender/clamav-slim)
 [![Docker Image Status](https://images.microbadger.com/badges/image/icebergdefender/clamav-slim.svg)](https://microbadger.com/images/icebergdefender/clamav-slim)
 
 Slim Docker Image containing libclamav and friends.
