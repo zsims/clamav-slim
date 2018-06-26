@@ -47,4 +47,6 @@ RUN sed -i 's/^Example$//' /usr/local/etc/freshclam.conf.sample && \
     clamscan --version && \
     curl http://database.clamav.net/bytecode.cvd > /usr/local/share/clamav/bytecode.cvd && \
     curl https://www.eicar.org/download/eicar.com.txt | clamscan - ; if [ $? -eq 1 ]; then echo "CHECK OK"; else echo "FAIL" && exit 1; fi && \
+    curl https://secure.eicar.org/eicar_com.zip | clamscan - ; if [ $? -eq 1 ]; then echo "CHECK OK"; else echo "FAIL" && exit 1; fi && \
+    curl https://secure.eicar.org/eicarcom2.zip | clamscan - ; if [ $? -eq 1 ]; then echo "CHECK OK"; else echo "FAIL" && exit 1; fi && \
     rm -f /usr/local/share/clamav/bytecode.cvd
