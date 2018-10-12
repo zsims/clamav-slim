@@ -1,6 +1,6 @@
 FROM debian:stable-slim as builder
 
-ARG WANT_CLAMAV_VERSION=0.100.0
+ARG WANT_CLAMAV_VERSION=0.100.2
 
 RUN apt update && \
     apt upgrade -y && \

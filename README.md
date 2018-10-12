@@ -15,7 +15,7 @@ The latest Debian stable "slim" image is used as the base, as alternatives such 
 # Example
 Build with [an available source version of ClamAV](https://www.clamav.net/downloads):
 ```
-docker build --build-arg=WANT_CLAMAV_VERSION="0.100.0" .
+docker build --build-arg=WANT_CLAMAV_VERSION="0.100.2" .
 ```
 
 Or run
